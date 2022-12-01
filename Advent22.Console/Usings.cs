@@ -1,0 +1,1 @@
+global using Advent22.Lib;

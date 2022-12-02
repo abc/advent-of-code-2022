@@ -2,29 +2,29 @@ namespace Advent22.Lib;
 
 public class Day2
 {
-    public static List<Strategy> StrategyGuide;
+    public static List<Strategy> StrategyGuidePart1 = new List<Strategy>();
+    public static List<Strategy> StrategyGuidePart2 = new List<Strategy>();
     
     static Day2()
     {
         const string filePath = @"data/input_day2.txt";
         var inputData = new FileInfo(filePath);
         using var reader = inputData.OpenText();
-        StrategyGuide = ProcessPuzzleInput(reader);
+        ProcessPuzzleInput(reader);
     }
     
     public static int Part1Solution()
     {
-        return StrategyGuide.Sum(s => s.CalculateScore());
+        return StrategyGuidePart1.Sum(s => s.CalculateScore());
     }
     
     public static int Part2Solution()
     {
-        return 0;
+        return StrategyGuidePart2.Sum(s => s.CalculateScore());
     }
 
-    public static List<Strategy> ProcessPuzzleInput(TextReader reader)
+    public static void ProcessPuzzleInput(TextReader reader)
     {
-        var result = new List<Strategy>();
         while (reader.ReadLine() is { } line)
         {
             var inputs = line.Split();
@@ -33,9 +33,8 @@ public class Day2
                 throw new InvalidDataException("Input stream was not in a valid format");
             }
 
-            result.Add(new Strategy(inputs[0][0].GetPlay(), inputs[1][0].GetPlay()));
+            StrategyGuidePart1.Add(new Strategy(inputs[0][0].GetPlay(), inputs[1][0].GetPlay()));
+            StrategyGuidePart2.Add(new Strategy(inputs[0][0].GetPlay(), inputs[1][0].GetOutcome()));
         }
-
-        return result;
     }
 }

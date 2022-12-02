@@ -4,22 +4,6 @@ namespace Advent22.Tests;
 
 public class Day2Tests
 {
-    [Fact]
-    public static void ProcessPuzzleInput_SampleInput_ExpectedResult()
-    {
-        const string input = "A Y\nB X\nC Z";
-        var expected = new List<Strategy>
-        {
-            new(Play.Rock, Play.Paper),
-            new(Play.Paper, Play.Rock),
-            new(Play.Scissors, Play.Scissors)
-        };
-        var reader = new StringReader(input);
-        var actual = Day2.ProcessPuzzleInput(reader);
-        
-        Assert.Equal(expected, actual);
-    }
-
     [Theory]
     [InlineData('A', Play.Rock)]
     [InlineData('B', Play.Paper)]

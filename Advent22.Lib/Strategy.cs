@@ -45,18 +45,19 @@ public class Strategy : IEquatable<Strategy>
     {
         var playScore = (int)YourPlay;
         
-        if (YourPlay == OpponentPlay)
+        // If the game is a win
+        if (YourPlay == OpponentPlay.GetWin())
         {
-            return 3 + playScore;
+            return 6 + playScore;
         }
 
-        if ((YourPlay == Play.Rock && OpponentPlay == Play.Paper)
-            || YourPlay == Play.Paper && OpponentPlay == Play.Scissors
-            || YourPlay == Play.Scissors && OpponentPlay == Play.Rock)
+        // If the game is a loss
+        if (YourPlay == OpponentPlay.GetLoss())
         {
             return 0 + playScore;
         }
 
-        return 6 + playScore;
+        // The game is a draw
+        return 3 + playScore;
     }
 }

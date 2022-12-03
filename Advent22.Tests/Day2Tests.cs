@@ -1,4 +1,5 @@
 using System.Text;
+using Advent22.Lib.Day2;
 
 namespace Advent22.Tests;
 

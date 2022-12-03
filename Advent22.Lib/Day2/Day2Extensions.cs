@@ -1,8 +1,8 @@
 using System.ComponentModel;
 
-namespace Advent22.Lib;
+namespace Advent22.Lib.Day2;
 
-public static class PlayExtensions
+public static class Day2Extensions
 {
     public static Play GetPlay(this char input)
     {

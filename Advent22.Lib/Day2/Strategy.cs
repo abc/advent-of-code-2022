@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Advent22.Lib;
+namespace Advent22.Lib.Day2;
 
 public class Strategy : IEquatable<Strategy>
 {

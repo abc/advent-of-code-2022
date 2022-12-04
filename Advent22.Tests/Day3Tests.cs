@@ -68,4 +68,24 @@ public class Day3Tests
         
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public static void GetGroupBadges_SampleInput_ExpectedOutput()
+    {
+        var reader = new StringReader(InputData);
+        var data = Day3.ProcessPuzzleInput(reader);
+        var actual = Day3.GetGroupBadges(data);
+        var expected = new List<char> { 'r', 'Z' };
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public static void Part2Solution_SampleInput_ExpectedOutput()
+    {
+        var reader = new StringReader(InputData);
+        var data = Day3.ProcessPuzzleInput(reader);
+        var actual = Day3.Part2Solution(data);
+        var expected = 70;
+        Assert.Equal(expected, actual);
+    }
 }

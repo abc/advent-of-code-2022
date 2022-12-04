@@ -43,4 +43,36 @@ public class Day3
         var data = ProcessPuzzleInput(input);
         return Part1Solution(data);
     }
+
+    public static List<char> GetGroupBadges(IEnumerable<Tuple<string, string>> data)
+    {
+        var results = new List<char>();
+        int i = 0;
+        int max = data.Count();
+        do
+        {
+            var result = data.Skip(i * 3).Take(3)
+                .Select(p => (p.Item1 + p.Item2).ToCharArray())
+                .Cast<IEnumerable<char>>()
+                .Aggregate((x, y) => x.Intersect(y));
+            // var result = group[0].Intersect(group[1]).Intersect(group[2]);
+            results.Add(result.Single());
+            i++;
+        } while (i * 3 < max);
+
+        return results;
+    }
+
+    public static int Part2Solution(IEnumerable<Tuple<string, string>> data)
+    {
+        return GetGroupBadges(data)
+                .Sum(c => c.GetPriority());
+    }
+    
+    public static int Part2Solution()
+    {
+        var input = GetInput();
+        var data = ProcessPuzzleInput(input);
+        return Part2Solution(data);
+    }
 }

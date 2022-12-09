@@ -19,6 +19,13 @@
       <None Update="data\input_day4.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="data\input_day5.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Toolkit.HighPerformance" Version="7.1.2" />
     </ItemGroup>
 
 </Project>

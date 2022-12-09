@@ -1,2 +1,2 @@
 global using Xunit;
-global using Advent22.Lib;
+global using FluentAssertions;

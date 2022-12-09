@@ -21,4 +21,4 @@ Console.WriteLine($"Day 5 Task 1 Answer: {Day5.Part1Solution()}");
 Console.WriteLine($"Day 5 Task 2 Answer: {Day5.Part2Solution()}");
 Console.WriteLine();
 Console.WriteLine($"Day 6 Task 1 Answer: {Day6.Part1Solution()}");
-// Console.WriteLine($"Day 5 Task 2 Answer: {Day5.Part2Solution()}");
+Console.WriteLine($"Day 5 Task 2 Answer: {Day6.Part2Solution()}");

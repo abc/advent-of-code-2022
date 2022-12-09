@@ -10,16 +10,16 @@ public class Day6
         return reader.ReadToEnd();
     }
     
-    public static int GetStartOfPacketIndex(string datastreamBuffer)
+    public static int GetStartOfPacketIndex(string datastreamBuffer, int markerLength)
     {
         var len = datastreamBuffer.Length;
         
         for (int i = 0; i < len; i++)
         {
-            var potentialMarker = datastreamBuffer.Substring(i, Math.Min(len - i, 4));
-            if (potentialMarker.Distinct().Count() == 4)
+            var potentialMarker = datastreamBuffer.Substring(i, Math.Min(len - i, markerLength));
+            if (potentialMarker.Distinct().Count() == markerLength)
             {
-                return i + 4;
+                return i + markerLength;
             }
         }
 
@@ -29,6 +29,12 @@ public class Day6
     public static int Part1Solution()
     {
         var input = GetInput();
-        return GetStartOfPacketIndex(input);
+        return GetStartOfPacketIndex(input, 4);
+    }
+    
+    public static int Part2Solution()
+    {
+        var input = GetInput();
+        return GetStartOfPacketIndex(input, 14);
     }
 }

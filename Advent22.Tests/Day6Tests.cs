@@ -12,7 +12,7 @@ public class Day6Tests
     [InlineData("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11)]
     public void FindStartOfPacketIndex_SampleData_ExpectedOutput (string input, int expected)
     {
-        var output = Day6.GetStartOfPacketIndex(input);
+        var output = Day6.GetStartOfPacketIndex(input, 4);
         output.Should().Be(expected);
     }
 }

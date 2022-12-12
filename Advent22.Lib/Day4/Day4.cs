@@ -1,15 +1,10 @@
 namespace Advent22.Lib.Day4;
 
-public class Day4
+public class Day4 : Day
 {
-    public static StreamReader GetInput()
-    {
-        const string filePath = @"data/input_day4.txt";
-        var inputData = new FileInfo(filePath);
-        return inputData.OpenText();
-    }
-    
-    public static int[] ParseRange(string input)
+    public override int DayNumber => 4;
+
+    public int[] ParseRange(string input)
     {
         var result = new List<int>();
         var elements = input.Split('-');
@@ -31,7 +26,7 @@ public class Day4
         return result.ToArray();
     }
 
-    public static List<ElfPair> ProcessPuzzleInput(TextReader reader)
+    public List<ElfPair> ProcessPuzzleInput(TextReader reader)
     {
         var results = new List<ElfPair>();
         
@@ -48,29 +43,29 @@ public class Day4
         return results;
     }
 
-    public static int Part1Solution(List<ElfPair> data)
+    public int Part1Solution(List<ElfPair> data)
     {
         return data.Count(p => p.FirstElfAreas.All(a => p.SecondElfAreas.Contains(a))
                                || p.SecondElfAreas.All(a => p.FirstElfAreas.Contains(a)));
     }
 
-    public static int Part2Solution(List<ElfPair> data)
+    public int Part2Solution(List<ElfPair> data)
     {
         return data.Count(p => p.FirstElfAreas.Any(a => p.SecondElfAreas.Contains(a))
                                || p.SecondElfAreas.Any(a => p.FirstElfAreas.Contains(a)));
     }
     
-    public static int Part1Solution()
+    public override string Part1Solution()
     {
         var input = GetInput();
         var data = ProcessPuzzleInput(input);
-        return Part1Solution(data);
+        return Part1Solution(data).ToString();
     }
     
-    public static int Part2Solution()
+    public override string Part2Solution()
     {
         var input = GetInput();
         var data = ProcessPuzzleInput(input);
-        return Part2Solution(data);
+        return Part2Solution(data).ToString();
     }
 }

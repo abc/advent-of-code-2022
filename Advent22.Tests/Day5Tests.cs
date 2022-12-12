@@ -4,6 +4,8 @@ namespace Advent22.Tests;
 
 public class Day5Tests
 {
+    private static readonly Day5 Day = new Day5();
+    
     private const string InputData =
         "    [D]    \n" +
         "[N] [C]    \n" +
@@ -19,7 +21,7 @@ public class Day5Tests
     public static void ProcessPuzzleInput_SampleData_AsExpected()
     {
         var input = new StringReader(InputData);
-        var actual = Day5.ProcessPuzzleInput(input);
+        var actual = Day.ProcessPuzzleInput(input);
         var expected = new Plan();
         expected.AddStack('N', 'Z');
         expected.AddStack('D', 'C', 'M');
@@ -35,7 +37,7 @@ public class Day5Tests
     public static void Process_SampleData_AsExpected()
     {
         var input = new StringReader(InputData);
-        var data = Day5.ProcessPuzzleInput(input);
+        var data = Day.ProcessPuzzleInput(input);
         data.ProcessPart1();
         var output = data.Result();
         output.Should().BeEquivalentTo("CMZ");
@@ -45,7 +47,7 @@ public class Day5Tests
     public static void ProcessStep_SampleData_AsExpected()
     {
         var input = new StringReader(InputData);
-        var data = Day5.ProcessPuzzleInput(input);
+        var data = Day.ProcessPuzzleInput(input);
         var operation = new Operation(1, 2, 1);
         data.ProcessStepPart1(operation);
         var expected = new Plan();
@@ -59,8 +61,8 @@ public class Day5Tests
     public static void Part1Solution_SampleData_AsExpected()
     {
         var input = new StringReader(InputData);
-        var data = Day5.ProcessPuzzleInput(input);
-        var answer = Day5.Part1Solution(data);
+        var data = Day.ProcessPuzzleInput(input);
+        var answer = Day.Part1Solution(data);
         answer.Should().Be("CMZ");
     }
 
@@ -73,7 +75,7 @@ public class Day5Tests
     [InlineData("move 10 from 7 to 1", 10, 7, 1)]
     public static void OperationFromString_ValidInput_MatchingOutput(string input, int count, int source, int destination)
     {
-        var output = Day5.OperationFromString(input);
+        var output = Day.OperationFromString(input);
         var expected = new Operation(count, source, destination);
         output.Should().BeEquivalentTo(expected);
     }
@@ -87,7 +89,7 @@ public class Day5Tests
     {
         var operation = new Operation (count, from, to);
         var input = new StringReader(InputData);
-        var data = Day5.ProcessPuzzleInput(input);
+        var data = Day.ProcessPuzzleInput(input);
         data.ProcessStepPart1(operation);
         var output = data.Result();
         output.Should().Be(expected);

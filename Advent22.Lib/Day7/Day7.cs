@@ -1,6 +1,6 @@
 namespace Advent22.Lib.Day7;
 
-public class Day7
+public class Day7 : Day
 {
     // Go through each line in the input
     // v Determine whether the line is a command or an output
@@ -14,20 +14,14 @@ public class Day7
     // If the item is a directory, add the directory to the structure.
     public const int TotalDiskSpace = 70000000;
     public const int FreeSpaceRequired = 30000000;
+    public override int DayNumber => 7;
     
-    public static StreamReader GetInput()
-    {
-        const string filePath = @"data/input_day7.txt";
-        var inputData = new FileInfo(filePath);
-        return inputData.OpenText();
-    }
-    
-    public static bool IsCommand(string input)
+    public bool IsCommand(string input)
     {
         return input.StartsWith('$');
     }
 
-    public static Terminal ProcessPuzzleInput(TextReader reader)
+    public Terminal ProcessPuzzleInput(TextReader reader)
     {
         var result = new Terminal();
         
@@ -48,7 +42,7 @@ public class Day7
         return result;
     }
 
-    public static TerminalCommand ParseCommand(string input)
+    public TerminalCommand ParseCommand(string input)
     {
         if (!IsCommand(input))
         {
@@ -66,7 +60,7 @@ public class Day7
         return new TerminalCommand(type, parts.Length > 2 ? parts[2] : null);
     }
 
-    public static DirectoryItem ParseItem(string input)
+    public DirectoryItem ParseItem(string input)
     {
         if (IsCommand(input))
         {
@@ -89,7 +83,7 @@ public class Day7
         throw new ArgumentException("input was not a valid file/directory", nameof(input));
     }
 
-    public static int Part1Solution(TextReader reader)
+    public int Part1Solution(TextReader reader)
     {
         var terminal = ProcessPuzzleInput(reader);
         var result = terminal.Root.GetDirectories(true)
@@ -98,7 +92,7 @@ public class Day7
         return result;
     }
     
-    public static int Part2Solution(TextReader reader)
+    public int Part2Solution(TextReader reader)
     {
         var terminal = ProcessPuzzleInput(reader);
         var freeSpace = TotalDiskSpace - terminal.Root.GetSize();
@@ -110,15 +104,15 @@ public class Day7
         return result.GetSize();
     }
 
-    public static int Part1Solution()
+    public override string Part1Solution()
     {
         var reader = GetInput();
-        return Part1Solution(reader);
+        return Part1Solution(reader).ToString();
     }
     
-    public static int Part2Solution()
+    public override string Part2Solution()
     {
         var reader = GetInput();
-        return Part2Solution(reader);
+        return Part2Solution(reader).ToString();
     }
 }

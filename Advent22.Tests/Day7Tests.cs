@@ -4,8 +4,10 @@ using File = Advent22.Lib.Day7.File;
 
 namespace Advent22.Tests;
 
-public class Day7Tests
+public static class Day7Tests
 {
+    private static readonly Day7 Day = new Day7();
+    
     private const string InputData =
         "$ cd /\n" +
         "$ ls\n" +
@@ -38,7 +40,7 @@ public class Day7Tests
     [InlineData("$ cd ..")]
     public static void IsCommand_WithCommands_ReturnsTrue(string command)
     {
-        var output = Day7.IsCommand(command);
+        var output = Day.IsCommand(command);
         output.Should().BeTrue();
     }
     
@@ -49,7 +51,7 @@ public class Day7Tests
     [InlineData("4060174 j")]
     public static void IsCommand_WithOutput_ReturnsFalse(string command)
     {
-        var output = Day7.IsCommand(command);
+        var output = Day.IsCommand(command);
         output.Should().BeFalse();
     }
     
@@ -60,7 +62,7 @@ public class Day7Tests
     [InlineData("$ cd ..", CommandType.ChangeDir, "..")]
     public static void ParseCommand_WithCommands_ReturnsExpected(string command, CommandType expected, string param)
     {
-        var output = Day7.ParseCommand(command);
+        var output = Day.ParseCommand(command);
         output.Command.Should().Be(expected);
         output.Argument.Should().Be(param);
     }
@@ -206,7 +208,7 @@ public class Day7Tests
     [InlineData("7214296 k", typeof(File), "k", 7214296)]
     public static void ParseItem_WithSampleInput_AsExpected(string input, Type type, string fileName, int size)
     {
-        var output = Day7.ParseItem(input);
+        var output = Day.ParseItem(input);
         output.Should().BeOfType(type);
         output.Name.Should().Be(fileName);
         output.GetSize().Should().Be(size);
@@ -216,7 +218,7 @@ public class Day7Tests
     public static void ProcessPuzzleInput_WithSampleInput_AsExpected()
     {
         var reader = new StringReader(InputData);
-        var terminal = Day7.ProcessPuzzleInput(reader);
+        var terminal = Day.ProcessPuzzleInput(reader);
         var tree = terminal.Root.Tree();
         var expected = 
             "- / (dir)\n" +
@@ -344,7 +346,7 @@ public class Day7Tests
     public static void GetDirectories_SampleData_SizesMatch()
     {
         var reader = new StringReader(InputData);
-        var terminal = Day7.ProcessPuzzleInput(reader);
+        var terminal = Day.ProcessPuzzleInput(reader);
         var directories = terminal.Root.GetDirectories(true);
         
         directories.Single(d => d.Name == "e").GetSize().Should().Be(584);
@@ -357,7 +359,7 @@ public class Day7Tests
     public static void Part1Solution_SampleData_95437()
     {
         var reader = new StringReader(InputData);
-        var result = Day7.Part1Solution(reader);
+        var result = Day.Part1Solution(reader);
         result.Should().Be(95437);
     }
     
@@ -365,7 +367,7 @@ public class Day7Tests
     public static void Part2Solution_SampleData_95437()
     {
         var reader = new StringReader(InputData);
-        var result = Day7.Part2Solution(reader);
+        var result = Day.Part2Solution(reader);
         result.Should().Be(24933642);
     }
 }

@@ -1,15 +1,10 @@
 namespace Advent22.Lib.Day3;
 
-public class Day3
+public class Day3 : Day
 {
-    public static StreamReader GetInput()
-    {
-        const string filePath = @"data/input_day3.txt";
-        var inputData = new FileInfo(filePath);
-        return inputData.OpenText();
-    }
-    
-    public static List<Tuple<string, string>> ProcessPuzzleInput(TextReader reader)
+    public override int DayNumber => 3;
+
+    public List<Tuple<string, string>> ProcessPuzzleInput(TextReader reader)
     {
         var results = new List<Tuple<string, string>>();
 
@@ -24,12 +19,12 @@ public class Day3
         return results;
     }
 
-    public static List<char> CharactersInCommon(string input1, string input2)
+    public List<char> CharactersInCommon(string input1, string input2)
     {
         return input1.Intersect(input2).ToList();
     }
 
-    public static int Part1Solution(IEnumerable<Tuple<string, string>> data)
+    public int Part1Solution(IEnumerable<Tuple<string, string>> data)
     {
         return data.Sum(i =>
             CharactersInCommon(i.Item1, i.Item2)
@@ -37,14 +32,14 @@ public class Day3
                 .Sum(c => c.GetPriority()));
     }
 
-    public static int Part1Solution()
+    public override string Part1Solution()
     {
         var input = GetInput();
         var data = ProcessPuzzleInput(input);
-        return Part1Solution(data);
+        return Part1Solution(data).ToString();
     }
 
-    public static List<char> GetGroupBadges(IEnumerable<Tuple<string, string>> data)
+    public List<char> GetGroupBadges(IEnumerable<Tuple<string, string>> data)
     {
         var results = new List<char>();
         int i = 0;
@@ -63,16 +58,16 @@ public class Day3
         return results;
     }
 
-    public static int Part2Solution(IEnumerable<Tuple<string, string>> data)
+    public int Part2Solution(IEnumerable<Tuple<string, string>> data)
     {
         return GetGroupBadges(data)
                 .Sum(c => c.GetPriority());
     }
     
-    public static int Part2Solution()
+    public override string Part2Solution()
     {
         var input = GetInput();
         var data = ProcessPuzzleInput(input);
-        return Part2Solution(data);
+        return Part2Solution(data).ToString();
     }
 }

@@ -1,29 +1,29 @@
 namespace Advent22.Lib.Day2;
 
-public class Day2
+public class Day2 : Day
 {
-    public static List<Strategy> StrategyGuidePart1 = new List<Strategy>();
-    public static List<Strategy> StrategyGuidePart2 = new List<Strategy>();
+    public override int DayNumber => 2;
     
-    static Day2()
+    public List<Strategy> StrategyGuidePart1 = new List<Strategy>();
+    public List<Strategy> StrategyGuidePart2 = new List<Strategy>();
+    
+    public Day2()
     {
-        const string filePath = @"data/input_day2.txt";
-        var inputData = new FileInfo(filePath);
-        using var reader = inputData.OpenText();
+        using var reader = GetInput();
         ProcessPuzzleInput(reader);
     }
     
-    public static int Part1Solution()
+    public override string Part1Solution()
     {
-        return StrategyGuidePart1.Sum(s => s.CalculateScore());
+        return StrategyGuidePart1.Sum(s => s.CalculateScore()).ToString();
     }
     
-    public static int Part2Solution()
+    public override string Part2Solution()
     {
-        return StrategyGuidePart2.Sum(s => s.CalculateScore());
+        return StrategyGuidePart2.Sum(s => s.CalculateScore()).ToString();
     }
 
-    public static void ProcessPuzzleInput(TextReader reader)
+    public void ProcessPuzzleInput(TextReader reader)
     {
         while (reader.ReadLine() is { } line)
         {

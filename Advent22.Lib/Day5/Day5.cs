@@ -4,16 +4,11 @@ using Microsoft.Toolkit.HighPerformance;
 
 namespace Advent22.Lib.Day5;
 
-public static class Day5
+public class Day5 : Day
 {
-    public static StreamReader GetInput()
-    {
-        const string filePath = @"data/input_day5.txt";
-        var inputData = new FileInfo(filePath);
-        return inputData.OpenText();
-    }
-    
-    public static Plan ProcessPuzzleInput(TextReader reader)
+    public override int DayNumber => 5;
+
+    public Plan ProcessPuzzleInput(TextReader reader)
     {
         var plan = new Plan();
         var stackStringBuilder = new StringBuilder();
@@ -50,7 +45,7 @@ public static class Day5
         return plan;
     }
 
-    public static Operation OperationFromString(string input)
+    public Operation OperationFromString(string input)
     {
         // Assume that operations are in format: move x from y to z
         // Probably would be more optimal as regex.
@@ -65,7 +60,7 @@ public static class Day5
         return new Operation(int.Parse(parts[1]), int.Parse(parts[3]), int.Parse(parts[5]));
     }
 
-    public static char[,] ProcessStackString(string input)
+    public char[,] ProcessStackString(string input)
     {
         var lines = input.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
         // All lines should have an identical length.
@@ -87,26 +82,26 @@ public static class Day5
         return arr;
     }
 
-    public static string Part1Solution(Plan data)
+    public string Part1Solution(Plan data)
     {
         data.ProcessPart1();
         return data.Result();
     }
     
-    public static string Part2Solution(Plan data)
+    public string Part2Solution(Plan data)
     {
         data.ProcessPart2();
         return data.Result();
     }
     
-    public static string Part1Solution()
+    public override string Part1Solution()
     {
         var input = GetInput();
         var data = ProcessPuzzleInput(input);
         return Part1Solution(data);
     }
     
-    public static string Part2Solution()
+    public override string Part2Solution()
     {
         var input = GetInput();
         var data = ProcessPuzzleInput(input);

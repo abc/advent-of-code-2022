@@ -1,14 +1,8 @@
 namespace Advent22.Lib.Day6;
 
-public class Day6
+public class Day6 : Day
 {
-    public static string GetInput()
-    {
-        const string filePath = @"data/input_day6.txt";
-        var inputData = new FileInfo(filePath);
-        var reader = inputData.OpenText();
-        return reader.ReadToEnd();
-    }
+    public override int DayNumber => 6;
     
     public static int GetStartOfPacketIndex(string datastreamBuffer, int markerLength)
     {
@@ -26,15 +20,15 @@ public class Day6
         throw new InvalidDataException();
     }
 
-    public static int Part1Solution()
+    public override string Part1Solution()
     {
-        var input = GetInput();
-        return GetStartOfPacketIndex(input, 4);
+        var input = GetInput().ReadToEnd();
+        return GetStartOfPacketIndex(input, 4).ToString();
     }
     
-    public static int Part2Solution()
+    public override string Part2Solution()
     {
-        var input = GetInput();
-        return GetStartOfPacketIndex(input, 14);
+        var input = GetInput().ReadToEnd();
+        return GetStartOfPacketIndex(input, 14).ToString();
     }
 }

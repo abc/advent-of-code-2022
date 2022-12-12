@@ -4,6 +4,8 @@ namespace Advent22.Tests;
 
 public class Day4Tests
 {
+    private static readonly Day4 Day = new Day4();
+    
     private const string InputData =
         "2-4,6-8\n" +
         "2-3,4-5\n" +
@@ -27,7 +29,7 @@ public class Day4Tests
     [InlineData("4-8", new int[] {4, 5, 6, 7, 8})]
     public static void ParseRange_SampleInput_ExpectedOutput(string input, int[] expected)
     {
-        var actual = Day4.ParseRange(input);
+        var actual = Day.ParseRange(input);
         Assert.Equal(expected, actual);
     }
 
@@ -69,7 +71,7 @@ public class Day4Tests
         };
         
         var reader = new StringReader(InputData);
-        var actual = Day4.ProcessPuzzleInput(reader);
+        var actual = Day.ProcessPuzzleInput(reader);
         
         Assert.Equal(expected, actual);
     }
@@ -78,8 +80,8 @@ public class Day4Tests
     public static void Part1Solution_SampleInput_ExpectedOutput()
     {
         var reader = new StringReader(InputData);
-        var data = Day4.ProcessPuzzleInput(reader);
-        var actual = Day4.Part1Solution(data);
+        var data = Day.ProcessPuzzleInput(reader);
+        var actual = Day.Part1Solution(data);
         var expected = 2;
 
         Assert.Equal(expected, actual);
@@ -89,8 +91,8 @@ public class Day4Tests
     public static void Part2Solution_SampleInput_ExpectedOutput()
     {
         var reader = new StringReader(InputData);
-        var data = Day4.ProcessPuzzleInput(reader);
-        var actual = Day4.Part2Solution(data);
+        var data = Day.ProcessPuzzleInput(reader);
+        var actual = Day.Part2Solution(data);
         var expected = 4;
 
         Assert.Equal(expected, actual);

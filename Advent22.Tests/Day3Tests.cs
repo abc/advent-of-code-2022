@@ -4,6 +4,8 @@ namespace Advent22.Tests;
 
 public class Day3Tests
 {
+    private static readonly Day3 Day = new Day3();
+    
     const string InputData =
         "vJrwpWtwJgWrhcsFMMfFFhFp\n" + 
         "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL\n" +
@@ -26,7 +28,7 @@ public class Day3Tests
         };
 
         var reader = new StringReader(InputData);
-        var actual = Day3.ProcessPuzzleInput(reader);
+        var actual = Day.ProcessPuzzleInput(reader);
         
         Assert.Equal(expected, actual);
     }
@@ -41,7 +43,7 @@ public class Day3Tests
 
     public static void CharactersInCommon_SampleData_ReturnsExpected(string input1, string input2, char expected)
     {
-        var output = Day3.CharactersInCommon(input1, input2);
+        var output = Day.CharactersInCommon(input1, input2);
         Assert.Single(output);
         var actual = output.Single();
         Assert.Equal(expected, actual);
@@ -62,8 +64,8 @@ public class Day3Tests
     public static void Part1Solution_SampleInput_ExpectedOutput()
     {
         var reader = new StringReader(InputData);
-        var data = Day3.ProcessPuzzleInput(reader);
-        var actual = Day3.Part1Solution(data);
+        var data = Day.ProcessPuzzleInput(reader);
+        var actual = Day.Part1Solution(data);
         var expected = 157;
         
         Assert.Equal(expected, actual);
@@ -73,8 +75,8 @@ public class Day3Tests
     public static void GetGroupBadges_SampleInput_ExpectedOutput()
     {
         var reader = new StringReader(InputData);
-        var data = Day3.ProcessPuzzleInput(reader);
-        var actual = Day3.GetGroupBadges(data);
+        var data = Day.ProcessPuzzleInput(reader);
+        var actual = Day.GetGroupBadges(data);
         var expected = new List<char> { 'r', 'Z' };
         Assert.Equal(expected, actual);
     }
@@ -83,8 +85,8 @@ public class Day3Tests
     public static void Part2Solution_SampleInput_ExpectedOutput()
     {
         var reader = new StringReader(InputData);
-        var data = Day3.ProcessPuzzleInput(reader);
-        var actual = Day3.Part2Solution(data);
+        var data = Day.ProcessPuzzleInput(reader);
+        var actual = Day.Part2Solution(data);
         var expected = 70;
         Assert.Equal(expected, actual);
     }

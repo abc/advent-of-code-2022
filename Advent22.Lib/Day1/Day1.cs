@@ -1,31 +1,31 @@
 namespace Advent22.Lib.Day1;
 
-public class Day1
+public class Day1 : Day
 {
-    public static List<int> ElfCalorieCounts;
+    public override int DayNumber => 1;
+    
+    public List<int> ElfCalorieCounts;
 
-    static Day1()
+    public Day1()
     {
         ElfCalorieCounts = ProcessPuzzleInput();
     }
     
-    public static int Part1Solution()
+    public override string Part1Solution()
     {
-        return ElfCalorieCounts.Max();
+        return ElfCalorieCounts.Max().ToString();
     }
 
-    public static int Part2Solution()
+    public override string Part2Solution()
     {
         return ElfCalorieCounts.OrderByDescending(c => c)
-            .Take(3).Sum();
+            .Take(3).Sum().ToString();
     }
 
-    public static List<int> ProcessPuzzleInput()
+    public List<int> ProcessPuzzleInput()
     {
         var output = new List<int>();
-        const string filePath = @"data/input_day1.txt";
-        var inputData = new FileInfo(filePath);
-        using var reader = inputData.OpenText();
+        using var reader = GetInput();
         var runningTotal = 0;
         while (reader.ReadLine() is { } line)
         {

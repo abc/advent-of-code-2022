@@ -2,22 +2,18 @@ using Advent22.Lib.Day3;
 
 namespace Advent22.Tests;
 
-public class Day3Tests
+public class Day3Tests : SolutionTests<Day3, IEnumerable<Tuple<string, string>>, int>
 {
-    private static readonly Day3 Day = new Day3();
-    
-    const string InputData =
+    public override string GetSampleString() =>
         "vJrwpWtwJgWrhcsFMMfFFhFp\n" + 
         "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL\n" +
         "PmmdzqPrVvPwwTWBwg\n" +
         "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn\n" +
         "ttgJtRGJQctTZtZT\n" +
         "CrZsJsPPZsGzwwsLwLmpwMDw\n";
-    
-    [Fact]
-    public static void ProcessPuzzleInput_SampleData_ReturnsExpected()
-    {
-        var expected = new List<Tuple<string, string>>
+
+    public override IEnumerable<Tuple<string, string>> GetExpectedInput() =>
+        new List<Tuple<string, string>>
         {
             new("vJrwpWtwJgWr", "hcsFMMfFFhFp"),
             new("jqHRNqRjqzjGDLGL", "rsFMfFZSrLrFZsSL"),
@@ -27,11 +23,8 @@ public class Day3Tests
             new("CrZsJsPPZsGz", "wwsLwLmpwMDw"),
         };
 
-        var reader = new StringReader(InputData);
-        var actual = Day.ProcessPuzzleInput(reader);
-        
-        Assert.Equal(expected, actual);
-    }
+    public override int Task1ExpectedOutput() => 157;
+    public override int Task2ExpectedOutput() => 70;
 
     [Theory]
     [InlineData("vJrwpWtwJgWr", "hcsFMMfFFhFp", 'p')]
@@ -41,9 +34,9 @@ public class Day3Tests
     [InlineData("ttgJtRGJ", "QctTZtZT", 't')]
     [InlineData("CrZsJsPPZsGz", "wwsLwLmpwMDw", 's')]
 
-    public static void CharactersInCommon_SampleData_ReturnsExpected(string input1, string input2, char expected)
+    public void CharactersInCommon_SampleData_ReturnsExpected(string input1, string input2, char expected)
     {
-        var output = Day.CharactersInCommon(input1, input2);
+        var output = GetDay().CharactersInCommon(input1, input2);
         Assert.Single(output);
         var actual = output.Single();
         Assert.Equal(expected, actual);
@@ -61,33 +54,12 @@ public class Day3Tests
     }
 
     [Fact]
-    public static void Task1Solution_SampleInput_ExpectedOutput()
+    public void GetGroupBadges_SampleInput_ExpectedOutput()
     {
-        var reader = new StringReader(InputData);
-        var data = Day.ProcessPuzzleInput(reader);
-        var actual = Day.Task1Solution(data);
-        var expected = 157;
-        
-        Assert.Equal(expected, actual);
-    }
-
-    [Fact]
-    public static void GetGroupBadges_SampleInput_ExpectedOutput()
-    {
-        var reader = new StringReader(InputData);
-        var data = Day.ProcessPuzzleInput(reader);
-        var actual = Day.GetGroupBadges(data);
+        var reader = new StringReader(GetSampleString());
+        var data = GetDay().ProcessPuzzleInput(reader);
+        var actual = GetDay().GetGroupBadges(data);
         var expected = new List<char> { 'r', 'Z' };
-        Assert.Equal(expected, actual);
-    }
-
-    [Fact]
-    public static void Part2Solution_SampleInput_ExpectedOutput()
-    {
-        var reader = new StringReader(InputData);
-        var data = Day.ProcessPuzzleInput(reader);
-        var actual = Day.Task2Solution(data);
-        var expected = 70;
         Assert.Equal(expected, actual);
     }
 }

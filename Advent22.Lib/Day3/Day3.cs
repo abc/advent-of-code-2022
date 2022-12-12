@@ -1,10 +1,10 @@
 namespace Advent22.Lib.Day3;
 
-public class Day3 : Day
+public sealed class Day3 : Solution<List<Tuple<string, string>>>
 {
     public override int DayNumber => 3;
 
-    public List<Tuple<string, string>> ProcessPuzzleInput(TextReader reader)
+    public override List<Tuple<string, string>> ProcessPuzzleInput(TextReader reader)
     {
         var results = new List<Tuple<string, string>>();
 

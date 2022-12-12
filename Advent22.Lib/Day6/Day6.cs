@@ -1,6 +1,6 @@
 namespace Advent22.Lib.Day6;
 
-public class Day6 : Day
+public sealed class Day6 : Solution<string>
 {
     public override int DayNumber => 6;
     
@@ -22,13 +22,18 @@ public class Day6 : Day
 
     public override string Part1Solution()
     {
-        var input = GetInput().ReadToEnd();
+        var input = ProcessPuzzleInput(GetInput());
         return GetStartOfPacketIndex(input, 4).ToString();
     }
     
     public override string Part2Solution()
     {
-        var input = GetInput().ReadToEnd();
+        var input = ProcessPuzzleInput(GetInput());
         return GetStartOfPacketIndex(input, 14).ToString();
+    }
+
+    public override string ProcessPuzzleInput(TextReader reader)
+    {
+        return reader.ReadToEnd();
     }
 }

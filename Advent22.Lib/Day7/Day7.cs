@@ -1,6 +1,6 @@
 namespace Advent22.Lib.Day7;
 
-public class Day7 : Day
+public sealed class Day7 : Solution<Terminal>
 {
     // Go through each line in the input
     // v Determine whether the line is a command or an output
@@ -21,7 +21,7 @@ public class Day7 : Day
         return input.StartsWith('$');
     }
 
-    public Terminal ProcessPuzzleInput(TextReader reader)
+    public override Terminal ProcessPuzzleInput(TextReader reader)
     {
         var result = new Terminal();
         

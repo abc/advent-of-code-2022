@@ -1,6 +1,6 @@
 namespace Advent22.Lib.Day4;
 
-public class Day4 : Day
+public sealed class Day4 : Solution<List<ElfPair>>
 {
     public override int DayNumber => 4;
 
@@ -26,7 +26,7 @@ public class Day4 : Day
         return result.ToArray();
     }
 
-    public List<ElfPair> ProcessPuzzleInput(TextReader reader)
+    public override List<ElfPair> ProcessPuzzleInput(TextReader reader)
     {
         var results = new List<ElfPair>();
         

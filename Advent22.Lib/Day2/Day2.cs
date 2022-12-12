@@ -1,16 +1,18 @@
 namespace Advent22.Lib.Day2;
 
-public class Day2 : Day
+public sealed class Day2 : Solution<Tuple<List<Strategy>, List<Strategy>>>
 {
     public override int DayNumber => 2;
     
-    public List<Strategy> StrategyGuidePart1 = new List<Strategy>();
-    public List<Strategy> StrategyGuidePart2 = new List<Strategy>();
+    public readonly List<Strategy> StrategyGuidePart1;
+    public readonly List<Strategy> StrategyGuidePart2;
     
     public Day2()
     {
         using var reader = GetInput();
-        ProcessPuzzleInput(reader);
+        var guides = ProcessPuzzleInput(reader);
+        StrategyGuidePart1 = guides.Item1;
+        StrategyGuidePart2 = guides.Item2;
     }
     
     public override string Part1Solution()
@@ -23,8 +25,11 @@ public class Day2 : Day
         return StrategyGuidePart2.Sum(s => s.CalculateScore()).ToString();
     }
 
-    public void ProcessPuzzleInput(TextReader reader)
+    public override Tuple<List<Strategy>, List<Strategy>> ProcessPuzzleInput(TextReader reader)
     {
+        var strategyGuidePart1 = new List<Strategy>();
+        var strategyGuidePart2 = new List<Strategy>();
+        
         while (reader.ReadLine() is { } line)
         {
             var inputs = line.Split();
@@ -33,8 +38,10 @@ public class Day2 : Day
                 throw new InvalidDataException("Input stream was not in a valid format");
             }
 
-            StrategyGuidePart1.Add(new Strategy(inputs[0][0].GetPlay(), inputs[1][0].GetPlay()));
-            StrategyGuidePart2.Add(new Strategy(inputs[0][0].GetPlay(), inputs[1][0].GetOutcome()));
+            strategyGuidePart1.Add(new Strategy(inputs[0][0].GetPlay(), inputs[1][0].GetPlay()));
+            strategyGuidePart2.Add(new Strategy(inputs[0][0].GetPlay(), inputs[1][0].GetOutcome()));
         }
+
+        return new Tuple<List<Strategy>, List<Strategy>>(strategyGuidePart1, strategyGuidePart2);
     }
 }

@@ -1,6 +1,6 @@
 namespace Advent22.Lib.Day1;
 
-public class Day1 : Day
+public sealed class Day1 : Solution<List<int>>
 {
     public override int DayNumber => 1;
     
@@ -8,7 +8,8 @@ public class Day1 : Day
 
     public Day1()
     {
-        ElfCalorieCounts = ProcessPuzzleInput();
+        var reader = GetInput();
+        ElfCalorieCounts = ProcessPuzzleInput(reader);
     }
     
     public override string Part1Solution()
@@ -22,10 +23,9 @@ public class Day1 : Day
             .Take(3).Sum().ToString();
     }
 
-    public List<int> ProcessPuzzleInput()
+    public override List<int> ProcessPuzzleInput(TextReader reader)
     {
         var output = new List<int>();
-        using var reader = GetInput();
         var runningTotal = 0;
         while (reader.ReadLine() is { } line)
         {

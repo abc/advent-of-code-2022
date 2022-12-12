@@ -4,11 +4,11 @@ using Microsoft.Toolkit.HighPerformance;
 
 namespace Advent22.Lib.Day5;
 
-public class Day5 : Day
+public sealed class Day5 : Solution<Plan>
 {
     public override int DayNumber => 5;
 
-    public Plan ProcessPuzzleInput(TextReader reader)
+    public override Plan ProcessPuzzleInput(TextReader reader)
     {
         var plan = new Plan();
         var stackStringBuilder = new StringBuilder();

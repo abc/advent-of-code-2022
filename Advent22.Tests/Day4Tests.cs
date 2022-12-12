@@ -72,8 +72,8 @@ public class Day4Tests
         
         var reader = new StringReader(InputData);
         var actual = Day.ProcessPuzzleInput(reader);
-        
-        Assert.Equal(expected, actual);
+
+        actual.Should().BeEquivalentTo(expected);
     }
 
     [Fact]

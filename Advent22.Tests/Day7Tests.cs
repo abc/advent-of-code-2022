@@ -359,7 +359,8 @@ public static class Day7Tests
     public static void Part1Solution_SampleData_95437()
     {
         var reader = new StringReader(InputData);
-        var result = Day.Part1Solution(reader);
+        var input = Day.ProcessPuzzleInput(reader);
+        var result = Day.Task1Solution(input);
         result.Should().Be(95437);
     }
     
@@ -367,7 +368,8 @@ public static class Day7Tests
     public static void Part2Solution_SampleData_95437()
     {
         var reader = new StringReader(InputData);
-        var result = Day.Part2Solution(reader);
+        var input = Day.ProcessPuzzleInput(reader);
+        var result = Day.Task2Solution(input);
         result.Should().Be(24933642);
     }
 }

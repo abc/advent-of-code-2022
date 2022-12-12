@@ -4,7 +4,7 @@ using Microsoft.Toolkit.HighPerformance;
 
 namespace Advent22.Lib.Day5;
 
-public sealed class Day5 : Solution<Plan>
+public sealed class Day5 : Solution<Plan, string>
 {
     public override int DayNumber => 5;
 
@@ -82,29 +82,15 @@ public sealed class Day5 : Solution<Plan>
         return arr;
     }
 
-    public string Part1Solution(Plan data)
+    public override string Task1Solution(Plan data)
     {
         data.ProcessPart1();
         return data.Result();
     }
     
-    public string Part2Solution(Plan data)
+    public override string Task2Solution(Plan data)
     {
         data.ProcessPart2();
         return data.Result();
-    }
-    
-    public override string Part1Solution()
-    {
-        var input = GetInput();
-        var data = ProcessPuzzleInput(input);
-        return Part1Solution(data);
-    }
-    
-    public override string Part2Solution()
-    {
-        var input = GetInput();
-        var data = ProcessPuzzleInput(input);
-        return Part2Solution(data);
     }
 }

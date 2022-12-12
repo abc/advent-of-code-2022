@@ -1,6 +1,6 @@
 namespace Advent22.Lib.Day4;
 
-public sealed class Day4 : Solution<List<ElfPair>>
+public sealed class Day4 : Solution<List<ElfPair>, int>
 {
     public override int DayNumber => 4;
 
@@ -43,29 +43,15 @@ public sealed class Day4 : Solution<List<ElfPair>>
         return results;
     }
 
-    public int Part1Solution(List<ElfPair> data)
+    public override int Task1Solution(List<ElfPair> data)
     {
         return data.Count(p => p.FirstElfAreas.All(a => p.SecondElfAreas.Contains(a))
                                || p.SecondElfAreas.All(a => p.FirstElfAreas.Contains(a)));
     }
 
-    public int Part2Solution(List<ElfPair> data)
+    public override int Task2Solution(List<ElfPair> data)
     {
         return data.Count(p => p.FirstElfAreas.Any(a => p.SecondElfAreas.Contains(a))
                                || p.SecondElfAreas.Any(a => p.FirstElfAreas.Contains(a)));
-    }
-    
-    public override string Part1Solution()
-    {
-        var input = GetInput();
-        var data = ProcessPuzzleInput(input);
-        return Part1Solution(data).ToString();
-    }
-    
-    public override string Part2Solution()
-    {
-        var input = GetInput();
-        var data = ProcessPuzzleInput(input);
-        return Part2Solution(data).ToString();
     }
 }

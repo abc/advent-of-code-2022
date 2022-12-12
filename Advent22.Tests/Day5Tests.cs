@@ -62,7 +62,7 @@ public class Day5Tests
     {
         var input = new StringReader(InputData);
         var data = Day.ProcessPuzzleInput(input);
-        var answer = Day.Part1Solution(data);
+        var answer = Day.Task1Solution(data);
         answer.Should().Be("CMZ");
     }
 

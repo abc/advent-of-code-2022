@@ -1,10 +1,10 @@
 namespace Advent22.Lib.Day3;
 
-public sealed class Day3 : Solution<List<Tuple<string, string>>>
+public sealed class Day3 : Solution<IEnumerable<Tuple<string, string>>, int>
 {
     public override int DayNumber => 3;
 
-    public override List<Tuple<string, string>> ProcessPuzzleInput(TextReader reader)
+    public override IEnumerable<Tuple<string, string>> ProcessPuzzleInput(TextReader reader)
     {
         var results = new List<Tuple<string, string>>();
 
@@ -24,19 +24,12 @@ public sealed class Day3 : Solution<List<Tuple<string, string>>>
         return input1.Intersect(input2).ToList();
     }
 
-    public int Part1Solution(IEnumerable<Tuple<string, string>> data)
+    public override int Task1Solution(IEnumerable<Tuple<string, string>> data)
     {
         return data.Sum(i =>
             CharactersInCommon(i.Item1, i.Item2)
                 .ToArray()
                 .Sum(c => c.GetPriority()));
-    }
-
-    public override string Part1Solution()
-    {
-        var input = GetInput();
-        var data = ProcessPuzzleInput(input);
-        return Part1Solution(data).ToString();
     }
 
     public List<char> GetGroupBadges(IEnumerable<Tuple<string, string>> data)
@@ -58,16 +51,9 @@ public sealed class Day3 : Solution<List<Tuple<string, string>>>
         return results;
     }
 
-    public int Part2Solution(IEnumerable<Tuple<string, string>> data)
+    public override int Task2Solution(IEnumerable<Tuple<string, string>> data)
     {
         return GetGroupBadges(data)
                 .Sum(c => c.GetPriority());
-    }
-    
-    public override string Part2Solution()
-    {
-        var input = GetInput();
-        var data = ProcessPuzzleInput(input);
-        return Part2Solution(data).ToString();
     }
 }

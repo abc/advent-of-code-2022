@@ -61,11 +61,11 @@ public class Day3Tests
     }
 
     [Fact]
-    public static void Part1Solution_SampleInput_ExpectedOutput()
+    public static void Task1Solution_SampleInput_ExpectedOutput()
     {
         var reader = new StringReader(InputData);
         var data = Day.ProcessPuzzleInput(reader);
-        var actual = Day.Part1Solution(data);
+        var actual = Day.Task1Solution(data);
         var expected = 157;
         
         Assert.Equal(expected, actual);
@@ -86,7 +86,7 @@ public class Day3Tests
     {
         var reader = new StringReader(InputData);
         var data = Day.ProcessPuzzleInput(reader);
-        var actual = Day.Part2Solution(data);
+        var actual = Day.Task2Solution(data);
         var expected = 70;
         Assert.Equal(expected, actual);
     }

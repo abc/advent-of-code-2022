@@ -1,6 +1,6 @@
 namespace Advent22.Lib.Day6;
 
-public sealed class Day6 : Solution<string>
+public sealed class Day6 : Solution<string, int>
 {
     public override int DayNumber => 6;
     
@@ -19,21 +19,19 @@ public sealed class Day6 : Solution<string>
 
         throw new InvalidDataException();
     }
-
-    public override string Part1Solution()
-    {
-        var input = ProcessPuzzleInput(GetInput());
-        return GetStartOfPacketIndex(input, 4).ToString();
-    }
     
-    public override string Part2Solution()
-    {
-        var input = ProcessPuzzleInput(GetInput());
-        return GetStartOfPacketIndex(input, 14).ToString();
-    }
-
     public override string ProcessPuzzleInput(TextReader reader)
     {
         return reader.ReadToEnd();
+    }
+
+    public override int Task1Solution(string data)
+    {
+        return GetStartOfPacketIndex(data, 4);
+    }
+
+    public override int Task2Solution(string data)
+    {
+        return GetStartOfPacketIndex(data, 14);
     }
 }

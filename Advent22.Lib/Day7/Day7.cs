@@ -1,6 +1,6 @@
 namespace Advent22.Lib.Day7;
 
-public sealed class Day7 : Solution<Terminal>
+public sealed class Day7 : Solution<Terminal, int>
 {
     // Go through each line in the input
     // v Determine whether the line is a command or an output
@@ -83,18 +83,16 @@ public sealed class Day7 : Solution<Terminal>
         throw new ArgumentException("input was not a valid file/directory", nameof(input));
     }
 
-    public int Part1Solution(TextReader reader)
+    public override int Task1Solution(Terminal terminal)
     {
-        var terminal = ProcessPuzzleInput(reader);
         var result = terminal.Root.GetDirectories(true)
             .Where(d => d.GetSize() <= 100000)
             .Sum(d => d.GetSize());
         return result;
     }
     
-    public int Part2Solution(TextReader reader)
+    public override int Task2Solution(Terminal terminal)
     {
-        var terminal = ProcessPuzzleInput(reader);
         var freeSpace = TotalDiskSpace - terminal.Root.GetSize();
         var deletionsNeeded = FreeSpaceRequired - freeSpace;
         var result = terminal.Root
@@ -102,17 +100,5 @@ public sealed class Day7 : Solution<Terminal>
             .OrderBy(d => d.GetSize())
             .First(d => d.GetSize() >= deletionsNeeded);
         return result.GetSize();
-    }
-
-    public override string Part1Solution()
-    {
-        var reader = GetInput();
-        return Part1Solution(reader).ToString();
-    }
-    
-    public override string Part2Solution()
-    {
-        var reader = GetInput();
-        return Part2Solution(reader).ToString();
     }
 }

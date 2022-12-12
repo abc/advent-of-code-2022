@@ -81,7 +81,7 @@ public class Day4Tests
     {
         var reader = new StringReader(InputData);
         var data = Day.ProcessPuzzleInput(reader);
-        var actual = Day.Part1Solution(data);
+        var actual = Day.Task1Solution(data);
         var expected = 2;
 
         Assert.Equal(expected, actual);
@@ -92,7 +92,7 @@ public class Day4Tests
     {
         var reader = new StringReader(InputData);
         var data = Day.ProcessPuzzleInput(reader);
-        var actual = Day.Part2Solution(data);
+        var actual = Day.Task2Solution(data);
         var expected = 4;
 
         Assert.Equal(expected, actual);

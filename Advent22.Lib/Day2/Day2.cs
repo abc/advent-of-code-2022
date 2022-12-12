@@ -1,28 +1,17 @@
 namespace Advent22.Lib.Day2;
 
-public sealed class Day2 : Solution<Tuple<List<Strategy>, List<Strategy>>>
+public sealed class Day2 : Solution<Tuple<List<Strategy>, List<Strategy>>, int>
 {
     public override int DayNumber => 2;
     
-    public readonly List<Strategy> StrategyGuidePart1;
-    public readonly List<Strategy> StrategyGuidePart2;
-    
-    public Day2()
+    public override int Task1Solution(Tuple<List<Strategy>, List<Strategy>> strategies)
     {
-        using var reader = GetInput();
-        var guides = ProcessPuzzleInput(reader);
-        StrategyGuidePart1 = guides.Item1;
-        StrategyGuidePart2 = guides.Item2;
+        return strategies.Item1.Sum(s => s.CalculateScore());
     }
     
-    public override string Part1Solution()
+    public override int Task2Solution(Tuple<List<Strategy>, List<Strategy>> strategies)
     {
-        return StrategyGuidePart1.Sum(s => s.CalculateScore()).ToString();
-    }
-    
-    public override string Part2Solution()
-    {
-        return StrategyGuidePart2.Sum(s => s.CalculateScore()).ToString();
+        return strategies.Item2.Sum(s => s.CalculateScore());
     }
 
     public override Tuple<List<Strategy>, List<Strategy>> ProcessPuzzleInput(TextReader reader)
